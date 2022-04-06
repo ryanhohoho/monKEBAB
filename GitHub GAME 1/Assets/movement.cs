@@ -29,9 +29,9 @@ public class movement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        /* /jump
+        //jump
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -43,7 +43,7 @@ public class movement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
-        */
+        
         //gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
