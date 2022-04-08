@@ -6,8 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody my_Rigidbody;
     //private Transform cameraMainTransform;
-    
-
+    public float jumpForce = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +25,14 @@ public class PlayerMovement : MonoBehaviour
             //my_Input.y = 0f;
             my_Rigidbody.MovePosition(transform.position + my_Input * Time.deltaTime * 5f);
         }
-       //jump code (hopefully)
+        //jump code (hopefully)
        if (Input.GetKey("space"))
         {
-            my_Rigidbody.MovePosition(transform.position += Vector3.up * Time.deltaTime);
+            Vector3 jumpVector3 = new Vector3(0, Input.GetAxis("Jump") * jumpForce, 0);
+            //my_Rigidbody.MovePosition(transform.position += Vector3.up * jumpForce * Time.deltaTime);
+            my_Rigidbody.AddForce(jumpVector3,ForceMode.VelocityChange);
         }
-
+       
         
     }
 }
